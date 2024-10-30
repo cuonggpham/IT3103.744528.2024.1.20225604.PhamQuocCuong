@@ -1,6 +1,5 @@
 // Pham Quoc Cuong - 20225604
 // Main class
-
 package cuongpq;
 
 public class Aims {
@@ -18,29 +17,29 @@ public class Aims {
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin","Animation",18.99f);
         anOrder.addDigitalVideoDisc(dvd3);
 
-        // Test when haven't been removed
-        System.out.printf("Total cost is: %.2f",anOrder.totalCost());
+        System.out.printf("CuongPQ 5604 : Total cost is: %.2f",anOrder.totalCost());
         System.out.println();
 
-        // Test when removed
-        anOrder.removeDigitalVideoDisc(dvd1);
-        System.out.printf("Total cost is: %.2f",anOrder.totalCost());
-        System.out.println();
-
-        anOrder.removeDigitalVideoDisc(dvd2);
-        System.out.printf("Total cost is: %.2f",anOrder.totalCost());
-        System.out.println();
-
-        anOrder.removeDigitalVideoDisc(dvd1);
-        System.out.printf("Total cost is: %.2f",anOrder.totalCost());
-        System.out.println(); 
-
+        // Test when remove DVD 
+        System.out.println("------When remove DVD3:");
         anOrder.removeDigitalVideoDisc(dvd3);
-        System.out.printf("Total cost is: %.2f",anOrder.totalCost());
+        System.out.printf("CuongPQ 5604 : Total cost is: %.2f",anOrder.totalCost());
         System.out.println();
 
-        anOrder.removeDigitalVideoDisc(dvd1);
-        System.out.printf("Total cost is: %.2f",anOrder.totalCost());
+        System.out.println("------Remove when DVD not exist in cart:");
+        anOrder.removeDigitalVideoDisc(dvd3); // Test remove when DVD not exist 
+
+        System.out.println("------When remove DVD2:");
+        anOrder.removeDigitalVideoDisc(dvd2);
+        System.out.printf("CuongPQ 5604 : Total cost is: %.2f",anOrder.totalCost());
         System.out.println();
+
+        System.out.println("------When remove DVD1:");
+        anOrder.removeDigitalVideoDisc(dvd1);
+        System.out.printf("CuongPQ 5604 : Total cost is: %.2f",anOrder.totalCost());
+        System.out.println();
+
+        System.out.println("------Remove when cart is empty:");
+        anOrder.removeDigitalVideoDisc(dvd1); // Test remove when cart is empty
     }
 }

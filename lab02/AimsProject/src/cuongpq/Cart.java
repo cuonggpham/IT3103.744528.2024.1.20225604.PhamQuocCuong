@@ -1,5 +1,4 @@
 // Pham Quoc Cuong - 20225604 
-
 package cuongpq;
 
 public class Cart {
@@ -13,13 +12,13 @@ public class Cart {
 
     // Method to add an item to the list
     public int addDigitalVideoDisc(DigitalVideoDisc disc) {
-        if (qtyOrdered +1 >= MAX_NUMBERS_ORDERED) {
-            System.out.println("The cast is almost full!");
+        if (qtyOrdered +1 > MAX_NUMBERS_ORDERED) {
+            System.out.println("CuongPQ 5604 : The cast is almost full!");
             return 0;
         } else {
             itemOrdered[qtyOrdered] = disc;
             qtyOrdered++;
-            System.out.println("The DVD "+"\'"+ disc.getTitle()+ "\'" +" have been added!");
+            System.out.println("CuongPQ 5604 : The DVD "+ "(" + qtyOrdered + ") " +"\'"+ disc.getTitle()+ "\'" +" have been added! ");
             return 1;
         }
     }
@@ -28,7 +27,7 @@ public class Cart {
     public int removeDigitalVideoDisc(DigitalVideoDisc disc){
         // Check if cart is empty
         if (qtyOrdered == 0) { 
-            System.out.println("Your cart is empty!");
+            System.out.println("CuongPQ 5604 : Your cart is empty!");
             return 0;
         }
         // Find the disc in the array
@@ -42,13 +41,13 @@ public class Cart {
                 }
                 itemOrdered[qtyOrdered - 1] = null; // Clear the last item
                 qtyOrdered--; // Reduce the number of items
-                System.out.println("Removed DVD '" + disc.getTitle() + "' successfully!");
+                System.out.println("CuongPQ 5604 : Removed DVD '" + disc.getTitle() + "' successfully!");
                 break;
             }
         }
         // If no matching DVD was found
         if (!found) {
-            System.err.println("No matching DVD found!");
+            System.err.println("CuongPQ 5604 : No matching DVD found!");
             return 0;
         }
         return 1;

@@ -31,4 +31,6 @@ bin/
 *.class
 *.zip 
 
-
+AimsProject.asta.lock
+Aims UseCase Diagram.png.bak
+Aims Class Diagram.png.bak
