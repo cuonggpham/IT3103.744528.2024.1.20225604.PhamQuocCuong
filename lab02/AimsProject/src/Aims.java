@@ -1,6 +1,6 @@
 // Pham Quoc Cuong - 20225604
 // Main class
-package cuongpq;
+package src;
 
 public class Aims {
     public static void main(String[] args) {

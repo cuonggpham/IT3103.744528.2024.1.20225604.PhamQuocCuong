@@ -1,5 +1,5 @@
 // Pham Quoc Cuong - 20225604 
-package cuongpq;
+package src;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
