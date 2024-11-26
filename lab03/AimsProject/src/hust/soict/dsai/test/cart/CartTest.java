@@ -1,5 +1,8 @@
 // Pham Quoc Cuong - 20225604
-package src;
+package src.hust.soict.dsai.test.cart;
+
+import src.hust.soict.dsai.aims.cart.Cart;
+import src.hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class CartTest {
     public static void main(String[]  args){
