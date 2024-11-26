@@ -1,7 +1,6 @@
 // Pham Quoc Cuong - 20225604 
 
 package src;
-import src.DigitalVideoDisc;
 
 public class TestPassingParameter {
     public static void main(String[] args) {

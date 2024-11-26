@@ -1,5 +1,5 @@
 // Pham Quoc Cuong - 20225604 
-package src;
+package src; 
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -102,5 +102,38 @@ public class Cart {
             qtyOrdered++;
             System.out.println("CuongPQ 5604 : The DVD " + '\'' + dvd2.getTitle() + '\'' + " has been added!");
         }
+    } 
+    
+    
+    public void printCart() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+        for(int i = 0; i < qtyOrdered; i++) {
+        	int j = i+1;
+        	System.out.println("CuongPQ 5604 " + j + ". " + itemOrdered[i].toString());
+        }
+        System.out.println("Total cost: " + totalCost() + "$");
+        System.out.println("***************************************************");  
     }
+
+    // search by ID method
+    public DigitalVideoDisc searchById(int id) {
+        for (DigitalVideoDisc disc : itemOrdered) {
+            if (disc != null && disc.getId() == id) {
+                return disc;
+            }
+        }
+        return null;
+    } 
+
+    // search by title method
+    public DigitalVideoDisc searchByTitle(String title) {
+        for (DigitalVideoDisc disc : itemOrdered) {
+            if (disc != null && disc.isMatch(title)) {
+                return disc;
+            }
+        }
+        return null;
+    }
+
 }

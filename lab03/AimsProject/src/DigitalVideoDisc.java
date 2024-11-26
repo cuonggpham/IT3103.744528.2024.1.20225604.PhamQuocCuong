@@ -76,5 +76,17 @@ public class DigitalVideoDisc {
     }
     public void setCost(float cost) {
         this.cost = cost;
-    }
+    } 
+
+    public String toString() {
+        return  "Title='" + title + "\'" + 
+                "Category='" + category + "\'" + 
+                "Director='" + director + "\'" + 
+                "Length='" + length + "\'" + 
+                "Cost='" + cost + "$" +"\'"; 
+    } 
+
+    public boolean isMatch(String title) {
+		return this.title.equalsIgnoreCase(title);
+	}
 }
