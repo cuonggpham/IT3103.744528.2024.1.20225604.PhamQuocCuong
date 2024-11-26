@@ -14,8 +14,13 @@ public class Aims {
                 "Geogre Lucas",87,24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin","Animation",18.99f);
 
-        // Add 2 dvd method
-        anOrder.addDigitalVideoDisc(dvd2, dvd3);
+        anOrder.addDigitalVideoDisc(dvd1); 
+        anOrder.addDigitalVideoDisc(dvd2);
+        anOrder.addDigitalVideoDisc(dvd3);
+
+        System.out.println("CuongPQ 5604 : The id of " + dvd1.getTitle() + " is " + dvd1.getId()); 
+        System.out.println("CuongPQ 5604 : The id of " + dvd2.getTitle() + " is " + dvd2.getId());
+        System.out.println("CuongPQ 5604 : The id of " + dvd3.getTitle() + " is " + dvd3.getId()); 
 
         System.out.printf("CuongPQ 5604 : Total cost is: %.2f",anOrder.totalCost());
 
