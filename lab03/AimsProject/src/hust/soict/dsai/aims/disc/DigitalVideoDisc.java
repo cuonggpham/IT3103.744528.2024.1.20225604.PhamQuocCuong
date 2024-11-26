@@ -1,5 +1,5 @@
 // Pham Quoc Cuong - 20225604 
-package src;
+package src.hust.soict.dsai.aims.disc;
 
 public class DigitalVideoDisc {
     private static int nbDigitalVideoDiscs = 0; //class variable

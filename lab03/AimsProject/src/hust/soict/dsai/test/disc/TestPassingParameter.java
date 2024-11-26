@@ -1,6 +1,8 @@
 // Pham Quoc Cuong - 20225604 
 
-package src;
+package src.hust.soict.dsai.test.disc;
+
+import src.hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class TestPassingParameter {
     public static void main(String[] args) {
