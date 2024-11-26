@@ -119,6 +119,7 @@ public class Cart {
     // search by ID method
     public DigitalVideoDisc searchById(int id) {
         for (DigitalVideoDisc disc : itemOrdered) {
+            
             if (disc != null && disc.getId() == id) {
                 return disc;
             }
@@ -129,6 +130,7 @@ public class Cart {
     // search by title method
     public DigitalVideoDisc searchByTitle(String title) {
         for (DigitalVideoDisc disc : itemOrdered) {
+
             if (disc != null && disc.isMatch(title)) {
                 return disc;
             }
