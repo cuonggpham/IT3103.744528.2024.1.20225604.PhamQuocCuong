@@ -15,6 +15,7 @@ public class CartTest {
 		
 		cart.printCart(); 
 
+        
         // search by ID 
         int searchId = 3;
         DigitalVideoDisc foundById = cart.searchById(searchId);
@@ -24,6 +25,7 @@ public class CartTest {
         else {
             System.out.println("CuongPQ 5604 - No DVD with ID: " + searchId); 
         }
+
 
         // search by title 
         String searchTitle = "star wars";
