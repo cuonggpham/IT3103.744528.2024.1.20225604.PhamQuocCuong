@@ -62,4 +62,45 @@ public class Cart {
         }
         return sum;
     }
+
+    //
+    // public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList){
+    //     for (int i = 0; i< dvdList.length; i++){
+    //         if (qtyOrdered < MAX_NUMBERS_ORDERED){
+    //             itemOrdered[qtyOrdered] = dvdList[i];
+    //             qtyOrdered++;
+    //             System.out.println("CuongPQ 5604 : The DVD " + dvdList[i].getTitle() + " has been added");
+    //         }
+    //         else{
+    //             System.out.println("CuongPQ 5604 : The cast is almost full! ");
+    //         }
+    //     }
+    // }
+
+    public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
+        for (DigitalVideoDisc disc : dvdList) {
+            if (qtyOrdered == MAX_NUMBERS_ORDERED) {
+                System.out.println("CuongPQ 5604 : The cart is almost full!");
+                break;
+            } else {
+                itemOrdered[qtyOrdered] = disc;
+                qtyOrdered++;
+                System.out.println("CuongPQ 5604 : The DVD " + '\'' + disc.getTitle() + '\'' + " has been added!");
+            }
+        }
+    }
+
+    //Add 2 DVD method
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
+        if (qtyOrdered + 1 >= MAX_NUMBERS_ORDERED) {
+            System.out.println("CuongPQ 5604 : The cart is almost full!");
+        } else {
+            itemOrdered[qtyOrdered] = dvd1;
+            qtyOrdered++;
+            System.out.println("CuongPQ 5604 : The DVD " + '\'' + dvd1.getTitle() + '\'' + " has been added!");
+            itemOrdered[qtyOrdered] = dvd2;
+            qtyOrdered++;
+            System.out.println("CuongPQ 5604 : The DVD " + '\'' + dvd2.getTitle() + '\'' + " has been added!");
+        }
+    }
 }
