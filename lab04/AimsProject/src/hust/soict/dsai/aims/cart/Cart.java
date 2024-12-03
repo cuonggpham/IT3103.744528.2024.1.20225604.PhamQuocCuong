@@ -1,140 +1,73 @@
 // Pham Quoc Cuong - 20225604 
 package src.hust.soict.dsai.aims.cart;
 
-import src.hust.soict.dsai.aims.media.DigitalVideoDisc;
+import src.hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
 
-    // Array to store ordered DVDs
-    private DigitalVideoDisc itemOrdered[] = 
-            new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
+    // ArrayList to store ordered Media items
+    private ArrayList<Media> itemsOrdered = new ArrayList<>();
 
-    private int qtyOrdered; // how many DigitalVideoDiscs in cart
-
-    // Method to add an item to the list
-    public int addDigitalVideoDisc(DigitalVideoDisc disc) {
-        if (qtyOrdered +1 > MAX_NUMBERS_ORDERED) {
-            System.out.println("CuongPQ 5604 : The cast is almost full!");
+    // Method to add a Media item to the list
+    public int addMedia(Media media) {
+        if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
+            System.out.println("CuongPQ 5604 : The cart is almost full!");
             return 0;
         } else {
-            itemOrdered[qtyOrdered] = disc;
-            qtyOrdered++;
-            System.out.println("CuongPQ 5604 : The DVD "+ "(" + qtyOrdered + ") " +"\'"+ disc.getTitle()+ "\'" +" have been added! ");
+            itemsOrdered.add(media);
+            System.out.println("CuongPQ 5604 : The item '" + media.getTitle() + "' has been added!");
             return 1;
         }
     }
 
-    // Method to remove an item from the list
-    public int removeDigitalVideoDisc(DigitalVideoDisc disc){
-        // Check if cart is empty
-        if (qtyOrdered == 0) { 
-            System.out.println("CuongPQ 5604 : Your cart is empty!");
+    // Method to remove a Media item from the list
+    public int removeMedia(Media media) {
+        if (itemsOrdered.remove(media)) {
+            System.out.println("CuongPQ 5604 : Removed item '" + media.getTitle() + "' successfully!");
+            return 1;
+        } else {
+            System.err.println("CuongPQ 5604 : No matching item found!");
             return 0;
         }
-        // Find the disc in the array
-        boolean found = false;
-        for (int i = 0; i < qtyOrdered; i++) {
-            if (itemOrdered[i].equals(disc)) { // Check if the DVD matches
-                found = true;
-                // Shift all items after the removed one to the left
-                for (int j = i; j < qtyOrdered - 1; j++) {
-                    itemOrdered[j] = itemOrdered[j + 1];
-                }
-                itemOrdered[qtyOrdered - 1] = null; // Clear the last item
-                qtyOrdered--; // Reduce the number of items
-                System.out.println("CuongPQ 5604 : Removed DVD '" + disc.getTitle() + "' successfully!");
-                break;
-            }
-        }
-        // If no matching DVD was found
-        if (!found) {
-            System.err.println("CuongPQ 5604 : No matching DVD found!");
-            return 0;
-        }
-        return 1;
     }
 
-
-    // Method to caculate the total cost DVDS in the cart
+    // Method to calculate the total cost of items in the cart
     public float totalCost() {
         float sum = 0.00f;
-        for(int i=0; i<qtyOrdered; i++) {
-            sum += itemOrdered[i].getCost();
+        for (Media media : itemsOrdered) {
+            sum += media.getCost();
         }
         return sum;
     }
 
-    //
-    // public void addDigitalVideoDisc(DigitalVideoDisc [] dvdList){
-    //     for (int i = 0; i< dvdList.length; i++){
-    //         if (qtyOrdered < MAX_NUMBERS_ORDERED){
-    //             itemOrdered[qtyOrdered] = dvdList[i];
-    //             qtyOrdered++;
-    //             System.out.println("CuongPQ 5604 : The DVD " + dvdList[i].getTitle() + " has been added");
-    //         }
-    //         else{
-    //             System.out.println("CuongPQ 5604 : The cast is almost full! ");
-    //         }
-    //     }
-    // }
-
-    public void addDigitalVideoDisc(DigitalVideoDisc... dvdList) {
-        for (DigitalVideoDisc disc : dvdList) {
-            if (qtyOrdered == MAX_NUMBERS_ORDERED) {
-                System.out.println("CuongPQ 5604 : The cart is almost full!");
-                break;
-            } else {
-                itemOrdered[qtyOrdered] = disc;
-                qtyOrdered++;
-                System.out.println("CuongPQ 5604 : The DVD " + '\'' + disc.getTitle() + '\'' + " has been added!");
-            }
-        }
-    }
-
-    //Add 2 DVD method
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-        if (qtyOrdered + 1 >= MAX_NUMBERS_ORDERED) {
-            System.out.println("CuongPQ 5604 : The cart is almost full!");
-        } else {
-            itemOrdered[qtyOrdered] = dvd1;
-            qtyOrdered++;
-            System.out.println("CuongPQ 5604 : The DVD " + '\'' + dvd1.getTitle() + '\'' + " has been added!");
-            itemOrdered[qtyOrdered] = dvd2;
-            qtyOrdered++;
-            System.out.println("CuongPQ 5604 : The DVD " + '\'' + dvd2.getTitle() + '\'' + " has been added!");
-        }
-    } 
-    
-    
+    // Display items in the cart
     public void printCart() {
         System.out.println("***********************CART***********************");
         System.out.println("Ordered Items:");
-        for(int i = 0; i < qtyOrdered; i++) {
-        	int j = i+1;
-        	System.out.println("CuongPQ 5604 " + j + ". " + itemOrdered[i].toString());
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            System.out.println((i + 1) + ". " + itemsOrdered.get(i).toString());
         }
         System.out.println("Total cost: " + totalCost() + "$");
-        System.out.println("***************************************************");  
+        System.out.println("***************************************************");
     }
 
-    // search by ID method
-    public DigitalVideoDisc searchById(int id) {
-        for (DigitalVideoDisc disc : itemOrdered) {
-            
-            if (disc != null && disc.getId() == id) {
-                return disc;
+    // Search by ID method
+    public Media searchById(int id) {
+        for (Media media : itemsOrdered) {
+            if (media != null && media.getId() == id) {
+                return media;
             }
         }
         return null;
-    } 
+    }
 
-    // search by title method
-    public DigitalVideoDisc searchByTitle(String title) {
-        for (DigitalVideoDisc disc : itemOrdered) {
-
-            if (disc != null && disc.isMatch(title)) {
-                return disc;
+    // Search by title method
+    public Media searchByTitle(String title) {
+        for (Media media : itemsOrdered) {
+            if (media != null && media.isMatch(title)) {
+                return media;
             }
         }
         return null;
