@@ -1,7 +1,7 @@
 // Pham Quoc Cuong - 20225604 
 package src.hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Disc {
+public class DigitalVideoDisc extends Disc implements Playable {
     // Constructor by category, title and cost
     public DigitalVideoDisc(String title, String category, float cost) {
         super();
@@ -16,7 +16,7 @@ public class DigitalVideoDisc extends Disc {
     }
 
     public DigitalVideoDisc(String title) {
-        //TODO Auto-generated constructor stub
+        this.setTitle(title);
     }
     
     public String toString() {
@@ -30,4 +30,13 @@ public class DigitalVideoDisc extends Disc {
     public boolean isMatch(String title) {
 		return this.getTitle().equalsIgnoreCase(title);
 	}
+
+
+    @Override
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());  
+    }
+
+    
 }

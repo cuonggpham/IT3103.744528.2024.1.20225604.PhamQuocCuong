@@ -1,3 +1,4 @@
+//Pham Quoc Cuong - 20225604
 package src.hust.soict.dsai.aims.media;
 
 import java.util.*;
@@ -10,6 +11,7 @@ public class Book extends Media {
         this.authors = authors;
     }
 
+    //add Author method
     public void addAuthor(String authorName) {
         if (!authors.contains(authorName)) {
             authors.add(authorName);
@@ -20,6 +22,7 @@ public class Book extends Media {
         }
     }
 
+    // remove Author method
     public void removeAuthor(String authorName) {
         if (authors.contains(authorName)) {
             authors.remove(authorName);
