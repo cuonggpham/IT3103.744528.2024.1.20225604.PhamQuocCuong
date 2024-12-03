@@ -1,3 +1,4 @@
+// Pham Quoc Cuong - 20225604
 package src.hust.soict.dsai.aims.media;
 
 public class Disc extends Media {
@@ -18,15 +19,12 @@ public class Disc extends Media {
     public int getLength() {
         return length;
     }
-
     public void setLength(int length) {
         this.length = length;
     }
-
     public String getDirector() {
         return director;
     }
-
     public void setDirector(String director) {
         this.director = director;
     } 
