@@ -27,10 +27,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
                 "Cost='" + getCost() + "$" +"\'"; 
     } 
 
-    public boolean isMatch(String title) {
-		return this.getTitle().equalsIgnoreCase(title);
-	}
-
 
     @Override
     public void play() {
