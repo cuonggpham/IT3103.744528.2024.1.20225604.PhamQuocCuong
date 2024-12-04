@@ -10,6 +10,10 @@ public class Cart {
     // ArrayList to store ordered Media items
     private ArrayList<Media> itemsOrdered = new ArrayList<>();
 
+    public ArrayList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
     // Method to add a Media item to the list
     public int addMedia(Media media) {
         if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
@@ -73,4 +77,19 @@ public class Cart {
         return null;
     }
 
+    public int getNumItemsInCart() {
+        return itemsOrdered.size();
+    }
+
+    public void sortByTitleCost() {
+        itemsOrdered.sort(Media.COMPARE_BY_TITLE_COST);
+    }
+
+    public void sortByCostTitle() {
+        itemsOrdered.sort(Media.COMPARE_BY_COST_TITLE);
+    }
+
+    public void emptyCart() {
+        itemsOrdered.clear();
+    }
 }

@@ -8,6 +8,9 @@ public class Store {
     // List of Media items in Store
     private ArrayList<Media> itemsInStore = new ArrayList<>(); 
 
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
     // Add a Media item to the store
     public void addMedia(Media media) {
         if (!itemsInStore.contains(media)) {
