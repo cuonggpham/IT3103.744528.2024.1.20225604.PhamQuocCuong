@@ -1,3 +1,4 @@
+// Pham Quoc Cuong - 20225604
 package src.hust.soict.dsai.aims.store;
 
 import java.util.ArrayList;
@@ -25,6 +26,26 @@ public class Store {
         } else {
             System.out.println("CuongPQ 5604 - There is no '" + media.getTitle() + "' in the store!");
         }
+    }
+
+    // Search by ID method
+    public Media searchById(int id) {
+        for (Media media : itemsInStore) {
+            if (media != null && media.getId() == id) {
+                return media;
+            }
+        }
+        return null;
+    }
+
+    // Search by title method
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media != null && media.isMatch(title)) {
+                return media;
+            }
+        }
+        return null;
     }
 
     // Print all items in the store

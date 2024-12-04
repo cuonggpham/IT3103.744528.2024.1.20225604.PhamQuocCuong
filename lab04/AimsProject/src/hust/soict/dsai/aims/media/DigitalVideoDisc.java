@@ -2,37 +2,33 @@
 package src.hust.soict.dsai.aims.media;
 
 public class DigitalVideoDisc extends Disc implements Playable {
-    // Constructor by category, title and cost
-    public DigitalVideoDisc(String title, String category, float cost) {
-        super();
-    }
-    // Constructor by director, category, title and cost
-    public DigitalVideoDisc(String title, String category, String director, float cost) {
-        super();
-    }
-    // Constructor by all attributes
-    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super();
-    }
-
+    // Constructors
     public DigitalVideoDisc(String title) {
-        this.setTitle(title);
+        super(title);
+    }
+    public DigitalVideoDisc(String title, String category, float cost) {
+        super(title, category, cost);
+    }
+    public DigitalVideoDisc(String title, String category, String directory, float cost) {
+        super(title, category, directory, cost);
+    }
+    public DigitalVideoDisc(String title, String category, String directory, int length, float cost) {
+        super(title, category,directory, length, cost);
     }
     
-    public String toString() {
-        return  "Title='" + getTitle() + "\'" + 
-                "Category='" + getCategory() + "\'" + 
-                "Director='" + getDirector() + "\'" + 
-                "Length='" + getLength() + "\'" + 
-                "Cost='" + getCost() + "$" +"\'"; 
-    } 
-
-
+    // Pham Quoc Cuong - 20225604
+    // Play Method
     @Override
     public void play() {
         System.out.println("Playing DVD: " + this.getTitle());
         System.out.println("DVD length: " + this.getLength());  
     }
 
-    
+    // Pham Quoc Cuong - 20225604
+    @Override
+    public String toString() {
+        return "DVD - Title: " + this.getTitle() + ", Category: " + this.getCategory() + ", Cost: " + this.getCost();
+    }
 }
+
+
