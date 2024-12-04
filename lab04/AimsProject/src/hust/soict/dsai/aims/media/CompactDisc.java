@@ -1,3 +1,4 @@
+//Pham Quoc Cuong - 20225604
 package src.hust.soict.dsai.aims.media;
 
 import java.util.*;
@@ -7,13 +8,29 @@ public class CompactDisc extends Disc implements Playable {
     private List<Track> tracks = new ArrayList<Track>();
 
     // Constructor
-    public CompactDisc(String artist) {
-        super();
-        this.artist = artist;
+    public CompactDisc(String title) {
+        super(title);
+    }
+    public CompactDisc(String title, String category, String director, int length, float cost) {
+        super(title, category, director, length, cost);
     }
 
-    public CompactDisc(int id, String title, String category, float cost, int length, String director, String artist, List<Track> tracks) {
-        super(id, title, category, cost, length, director);
+    public CompactDisc(String title, String category, String director, ArrayList<Track> tracks, float cost) {
+        super(title, category, director, cost);
+        this.tracks = tracks;
+        this.setLength(this.getLength());
+    }
+    public CompactDisc(String title, String artist, ArrayList<Track> tracks) {
+        super(title);
+        this.artist = artist;
+        this.tracks = tracks;
+    }
+    public CompactDisc(String title, String artist) {
+        super(title);
+        this.artist = artist;
+    }
+    public CompactDisc(String title, String category, String director, int length, float cost, String artist, ArrayList<Track> tracks) {
+        super(title, category, director, length, cost);
         this.artist = artist;
         this.tracks = tracks;
     }
@@ -51,6 +68,7 @@ public class CompactDisc extends Disc implements Playable {
         return totalLength;
     }
 
+    // Pham Quoc Cuong - 20225604
     @Override
     public void play() {
         System.out.println("Playing CD: " + this.getTitle());
@@ -60,5 +78,11 @@ public class CompactDisc extends Disc implements Playable {
         for (Track track : tracks) {
             track.play();
         }
+    }
+
+    // Pham Quoc Cuong - 20225604
+    @Override
+    public String toString() {
+        return "CD - Title: " + this.getTitle() + ", Category: " + this.getCategory() + ", Artist: " + this.getArtist() + ", Cost: " + this.getCost();
     }
 }

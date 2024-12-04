@@ -1,15 +1,15 @@
 // Pham Quoc Cuong - 20225604
-// Main class
-package src.hust.soict.dsai.aims;
+package src.hust.soict.dsai.test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import src.hust.soict.dsai.aims.media.DigitalVideoDisc;
 import src.hust.soict.dsai.aims.media.Book;
 import src.hust.soict.dsai.aims.media.CompactDisc;
+import src.hust.soict.dsai.aims.media.DigitalVideoDisc;
 import src.hust.soict.dsai.aims.media.Media;
 
-public class Aims {
+public class PolymorphismTest {
     public static void main(String[] args) {
         List<Media> media = new ArrayList<>();
 
@@ -21,6 +21,8 @@ public class Aims {
         media.add(book);
         media.add(dvd);
 
-        media.forEach(item -> System.out.println(item.toString()));
+        for(Media m : media) {
+            System.out.println(m.toString());
+        }
     }
 }

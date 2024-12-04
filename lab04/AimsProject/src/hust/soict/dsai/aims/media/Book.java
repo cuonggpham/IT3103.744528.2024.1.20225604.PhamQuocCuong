@@ -6,9 +6,18 @@ import java.util.*;
 public class Book extends Media {
     private List<String> authors = new ArrayList<String>();
 
-    public Book(int id, String title, String category, float cost, List<String> authors) {
-        super(id, title, category, cost);
+    //Constructor
+    public Book(String title, String category, float cost) {
+        super(title, category, cost);
+    }
+
+    public Book(String title, String category, float cost, ArrayList<String> authors) {
+        super(title, category, cost);
         this.authors = authors;
+    }
+
+    public Book(String title) {
+        super(title);
     }
 
     //add Author method
@@ -29,8 +38,7 @@ public class Book extends Media {
             System.out.println("CuongPQ 5604 : Removed author successfully");
         } else {
             System.out.println("CuongPQ 5604 : Author not found");
-        }
-        
+        }   
     }
 
     public List<String> getAuthors() {
@@ -40,4 +48,10 @@ public class Book extends Media {
     public void setAuthors(List<String> authors) {
         this.authors = authors;
     } 
+
+    // Pham Quoc Cuong - 20225604
+    @Override
+    public String toString() {
+        return "Book - Title: " + this.getTitle() + ", Category: " + this.getCategory() + ", Cost: " + this.getCost();
+    }
 }
