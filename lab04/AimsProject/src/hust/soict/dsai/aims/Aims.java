@@ -298,7 +298,7 @@ public class Aims {
                     return;
                 }
                 case 2 -> {
-                    System.out.print("Enter media's title: ");
+                    System.out.print("CuongPQ - 5604: Enter media's title: ");
                     String title = scanner.nextLine();
                     Media item = store.searchByTitle(title);
                     if (item == null) {
@@ -308,7 +308,7 @@ public class Aims {
                     }
                 }
                 case 3 -> {
-                    System.out.print("Enter media's title: ");
+                    System.out.print("CuongPQ - 5604: Enter media's title: ");
                     String title = scanner.nextLine();
                     Media item = store.searchByTitle(title);
                     if (item == null) {
@@ -364,11 +364,11 @@ public class Aims {
                     scanner.nextLine();
                     Media item;
                     if (option2 == 1) {
-                        System.out.println("Enter title: ");
+                        System.out.println("CuongPQ - 5604: Enter title: ");
                         String title = scanner.nextLine();
                         item = cart.searchByTitle(title);
                     } else {
-                        System.out.println("Enter id: ");
+                        System.out.println("CuongPQ - 5604: Enter id: ");
                         int id = inputInt(scanner);
                         item = cart.searchById(id);
                     }
@@ -396,7 +396,7 @@ public class Aims {
                     }
                 }
                 case 3 -> {
-                    System.out.print("Enter media's title: ");
+                    System.out.print("CuongPQ - 5604: Enter media's title: ");
                     String title = scanner.nextLine();
                     Media item = cart.searchByTitle(title);
                     if (item == null) {
@@ -406,7 +406,7 @@ public class Aims {
                     }
                 }
                 case 4 -> {
-                    System.out.print("Enter media's title: ");
+                    System.out.print("CuongPQ - 5604: Enter media's title: ");
                     String title = scanner.nextLine();
                     Media item = cart.searchByTitle(title);
                     if (item == null) {
