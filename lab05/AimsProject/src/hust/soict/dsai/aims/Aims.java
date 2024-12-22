@@ -3,6 +3,7 @@ package hust.soict.dsai.aims;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import java.util.*;
 
 public class Aims {
@@ -133,13 +134,12 @@ public class Aims {
                         int nbTrack = inputInt(scanner);
                         scanner.nextLine();
                         ArrayList<Track> tracks = new ArrayList<>();
-                        StringBuilder name = new StringBuilder();
                         for (int i = 0; i < nbTrack; i++) {
                             System.out.print("CuongPQ - 5604: Enter Track[" + i + "]'s name: ");
-                            name.replace(0, name.length(), scanner.nextLine());
+                            String trackName = scanner.nextLine();
                             System.out.print("CuongPQ - 5604: Enter Track[" + i + "]'s length: ");
                             int trackLength = inputInt(scanner);
-                            tracks.add(new Track(name.toString(), trackLength));
+                            tracks.add(new Track(trackName, trackLength));
                             scanner.nextLine();
                         }
                         store.addMedia(new CompactDisc(title, category, artist, tracks, cost));
@@ -182,47 +182,39 @@ public class Aims {
                 media.setCategory(category);
                 media.setCost(cost);
 
-                switch (media) {
-                    case DigitalVideoDisc digitalVideoDisc -> {
-                        System.out.print("CuongPQ - 5604: Enter new director's name: ");
-                        scanner.nextLine();
-                        String director = scanner.nextLine();
-                        System.out.print("CuongPQ - 5604: Enter new dvd's length: ");
-                        int length = inputInt(scanner);
-                        digitalVideoDisc.setDirector(director);
-                        digitalVideoDisc.setLength(length);
-                    }
-                    case Book book -> {
-                        System.out.print("CuongPQ - 5604: Enter new author's name (Enter nothing to skip): ");
-                        String authorInput = scanner.nextLine();
+                if (media instanceof DigitalVideoDisc digitalVideoDisc) {
+                    System.out.print("CuongPQ - 5604: Enter new director's name: ");
+                    String director = scanner.nextLine();
+                    System.out.print("CuongPQ - 5604: Enter new dvd's length: ");
+                    int length = inputInt(scanner);
+                    digitalVideoDisc.setDirector(director);
+                    digitalVideoDisc.setLength(length);
+                } else if (media instanceof Book book) {
+                    System.out.print("CuongPQ - 5604: Enter new author's name (Enter nothing to skip): ");
+                    String authorInput = scanner.nextLine();
 
-                        while (!authorInput.isEmpty()) {
-                            ((Book) media).addAuthor(authorInput);
-                            System.out.print("CuongPQ - 5604: Enter new author's name (Enter nothing to skip): ");
-                            authorInput = scanner.nextLine();
-                        }
+                    while (!authorInput.isEmpty()) {
+                        book.addAuthor(authorInput);
+                        System.out.print("CuongPQ - 5604: Enter new author's name (Enter nothing to skip): ");
+                        authorInput = scanner.nextLine();
                     }
-                    case CompactDisc compactDisc -> {
-                        System.out.print("CuongPQ - 5604: Enter new artist's name: ");
-                        String artist = scanner.nextLine();
-                        System.out.print("CuongPQ - 5604: Enter new number of tracks: ");
-                        int nbTrack = inputInt(scanner);
+                } else if (media instanceof CompactDisc compactDisc) {
+                    System.out.print("CuongPQ - 5604: Enter new artist's name: ");
+                    String artist = scanner.nextLine();
+                    System.out.print("CuongPQ - 5604: Enter new number of tracks: ");
+                    int nbTrack = inputInt(scanner);
+                    scanner.nextLine();
+                    ArrayList<Track> tracks = new ArrayList<>();
+                    for (int i = 0; i < nbTrack; i++) {
+                        System.out.print("CuongPQ - 5604: Enter Track[" + i + "]'s name: ");
+                        String trackName = scanner.nextLine();
+                        System.out.print("CuongPQ - 5604: Enter Track[" + i + "]'s length: ");
+                        int trackLength = inputInt(scanner);
+                        tracks.add(new Track(trackName, trackLength));
                         scanner.nextLine();
-                        ArrayList<Track> tracks = new ArrayList<>();
-                        StringBuilder name = new StringBuilder();
-                        for (int i = 0; i < nbTrack; i++) {
-                            System.out.print("CuongPQ - 5604: Enter Track[" + i + "]'s name: ");
-                            name.replace(0, name.length(), scanner.nextLine());
-                            System.out.print("CuongPQ - 5604: Enter Track[" + i + "]'s length: ");
-                            int trackLength = inputInt(scanner);
-                            tracks.add(new Track(name.toString(), trackLength));
-                            scanner.nextLine();
-                        }
-                        compactDisc.setArtist(artist);
-                        compactDisc.setTracks(tracks);
                     }
-                    default -> {
-                    }
+                    compactDisc.setArtist(artist);
+                    compactDisc.setTracks(tracks);
                 }
                 System.out.println("Media have been updated !");
             }
@@ -258,12 +250,22 @@ public class Aims {
                         System.out.println("This media is unplayable");
                     } else {
                         if (item instanceof DigitalVideoDisc dvd) {
-                            dvd.play();
+                            try {
+                                dvd.play();
+                            } catch (PlayerException e) {
+                                System.out.println("Error: " + e.getMessage());
+                            }
                         }
                         if (item instanceof CompactDisc cd) {
                             if (((CompactDisc) item).getTracks().isEmpty()) {
                                 System.out.println("This CD has no track, can't play !");
-                            } else cd.play();
+                            } else {
+                                try {
+                                    cd.play();
+                                } catch (PlayerException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
+                            }
                         }
                     }
                 }
@@ -318,10 +320,22 @@ public class Aims {
                             System.out.println("This media is unplayable");
                         } else {
                             if (item instanceof DigitalVideoDisc dvd) {
-                                dvd.play();
+                                try {
+                                    dvd.play();
+                                } catch (PlayerException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
                             }
                             if (item instanceof CompactDisc cd) {
-                                cd.play();
+                                if (((CompactDisc) item).getTracks().isEmpty()) {
+                                    System.out.println("This CD has no track, can't play !");
+                                } else {
+                                    try {
+                                        cd.play();
+                                    } catch (PlayerException e) {
+                                        System.out.println("Error: " + e.getMessage());
+                                    }
+                                }
                             }
                         }
                     }
@@ -334,7 +348,7 @@ public class Aims {
         }
     }
 
-    public static void cartMenu(Scanner scanner,Cart cart) {
+    public static void cartMenu(Scanner scanner, Cart cart) {
         while (true) {
             System.out.println("""
                     CuongPQ - 5604: Options:
@@ -345,8 +359,8 @@ public class Aims {
                     4. Play a media
                     5. Place order
                     0. Back
-                    -------------------------------- \s
-                    "Please choose a number: 0-1-2-3-4-5""");
+                    -------------------------------- 
+                    Please choose a number: 0-1-2-3-4-5""");
             int option = getOption(scanner);
             scanner.nextLine();
             switch (option) {
@@ -364,11 +378,11 @@ public class Aims {
                     scanner.nextLine();
                     Media item;
                     if (option2 == 1) {
-                        System.out.println("CuongPQ - 5604: Enter title: ");
+                        System.out.print("CuongPQ - 5604: Enter title: ");
                         String title = scanner.nextLine();
                         item = cart.searchByTitle(title);
                     } else {
-                        System.out.println("CuongPQ - 5604: Enter id: ");
+                        System.out.print("CuongPQ - 5604: Enter id: ");
                         int id = inputInt(scanner);
                         item = cart.searchById(id);
                     }
@@ -378,7 +392,7 @@ public class Aims {
                         System.out.println(item);
                     }
                 }
-                case  2 -> {
+                case 2 -> {
                     System.out.println("""
                             1. Sort by title cost
                             2. Sort by cost title
@@ -412,20 +426,28 @@ public class Aims {
                     if (item == null) {
                         System.out.println("There is no such media !");
                     } else {
-                        if (item.getClass().getSimpleName().equals("Book")) {
-                            System.out.println("This media is unplayable");
-                        } else {
-                            if (item instanceof DigitalVideoDisc dvd) {
+                        if (item instanceof DigitalVideoDisc dvd) {
+                            try {
                                 dvd.play();
+                            } catch (PlayerException e) {
+                                System.out.println("Error: " + e.getMessage());
                             }
-                            if (item instanceof CompactDisc cd) {
-                                cd.play();
+                        }
+                        if (item instanceof CompactDisc cd) {
+                            if (((CompactDisc) item).getTracks().isEmpty()) {
+                                System.out.println("This CD has no track, can't play !");
+                            } else {
+                                try {
+                                    cd.play();
+                                } catch (PlayerException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
                             }
                         }
                     }
                 }
-                case  5 -> {
-                    System.out.println("Your cart have been paid\nThanks for using our service");
+                case 5 -> {
+                    System.out.println("Your cart has been paid\nThanks for using our service");
                     cart.emptyCart();
                 }
             }

@@ -1,5 +1,6 @@
 // Pham Quoc Cuong - 20225604 
-package hust.soict.dsai.aims.media;
+package hust.soict.dsai.aims.media; 
+import hust.soict.dsai.aims.exception.PlayerException;
 
 public class DigitalVideoDisc extends Disc implements Playable {
     // Constructors
@@ -23,19 +24,20 @@ public class DigitalVideoDisc extends Disc implements Playable {
         super(id,title,category,cost);
     }
     
-    
-    // Pham Quoc Cuong - 20225604
-    // Play Method
-    @Override
-    public void play() {
-        System.out.println("Playing DVD: " + this.getTitle());
-        System.out.println("DVD length: " + this.getLength());  
-    }
-
     // Pham Quoc Cuong - 20225604
     @Override
     public String toString() {
         return "DVD - Title: " + this.getTitle() + ", Category: " + this.getCategory() + ", Cost: " + this.getCost();
+    } 
+
+    @Override
+    public void play() throws PlayerException {
+        if(this.getLength() > 0) {
+            System.out.println("Playing DVD: " + this.getTitle());
+            System.out.println("DVD length: " + this.getLength());
+        } else {
+            throw new PlayerException("ERROR: DVD length is non-positive");
+        }
     }
 }
 
