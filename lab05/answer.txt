@@ -1,0 +1,4 @@
+The Aims class must be updated to handle any exceptions generated when the play() methods are called. What happens when you don’t update for them to catch? 
+
+Nếu lớp Aims không được điều chỉnh để xử lý ngoại lệ khi gọi phương thức play(), chương trình có thể gặp sự cố và dừng đột ngột mà không có cách khắc phục cụ thể. Điều này khiến người dùng khó xác định nguyên nhân gây ra lỗi, dẫn đến trải nghiệm sử dụng không thuận lợi.
+Bằng cách sử dụng khối try-catch, ngoại lệ có thể được xử lý một cách chủ động. Khi lỗi xảy ra, khối catch sẽ nắm bắt và cung cấp thông tin chi tiết thông qua các phương thức như getMessage(), toString(), hoặc printStackTrace(). Điều này không chỉ giúp người dùng hiểu rõ vấn đề mà còn cho phép họ tiếp tục sử dụng ứng dụng mà không bị gián đoạn.

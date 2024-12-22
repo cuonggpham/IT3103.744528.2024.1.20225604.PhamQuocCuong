@@ -1,12 +1,13 @@
-// Pham Quoc Cuong
+// Pham Quoc Cuong - 20225604
 package hust.soict.dsai.aims.screen;
+
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.media.*;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javax.swing.*;
 import java.io.IOException;
 
@@ -18,9 +19,9 @@ public class CartScreen extends JFrame {
         this.cart = cart;
         JFXPanel fxPanel = new JFXPanel();
         this.add(fxPanel);
-        this.setTitle("20225604 - Cart");
+        this.setTitle("CuongPQ - 5604: Cart");
         this.setVisible(true);
-        setSize(1100,768);
+        setSize(1100, 768);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
