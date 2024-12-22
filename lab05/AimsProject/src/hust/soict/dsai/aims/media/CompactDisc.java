@@ -1,5 +1,6 @@
 //Pham Quoc Cuong - 20225604
 package hust.soict.dsai.aims.media;
+import hust.soict.dsai.aims.exception.PlayerException;
 
 import java.util.*;
 
@@ -68,7 +69,6 @@ public class CompactDisc extends Disc implements Playable {
         this.tracks = tracks;
     }
 
-
     // Methods to manage tracks
     public void addTrack(Track track) {
         if (tracks.contains(track)) {
@@ -99,13 +99,17 @@ public class CompactDisc extends Disc implements Playable {
 
     // Pham Quoc Cuong - 20225604
     @Override
-    public void play() {
-        System.out.println("Playing CD: " + this.getTitle());
-        System.out.println("Artist: " + this.getArtist());
-        System.out.println("CD length: " + this.getLength());
-        System.out.println("Tracks:");
-        for (Track track : tracks) {
-            track.play();
+    public void play() throws PlayerException {
+        if(this.getLength() > 0) {
+            System.out.println("Playing CD: " + this.getTitle());
+            System.out.println("CD length: " + this.getLength());
+            System.out.println("CD artist: " + this.getArtist());
+            System.out.println("CD tracks: ");
+            for (Track track : tracks) {
+                track.play();
+            }
+        } else {
+            throw new PlayerException("ERROR: CD length is non-positive");
         }
     }
 
