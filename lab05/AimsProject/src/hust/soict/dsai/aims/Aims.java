@@ -250,11 +250,11 @@ public class Aims {
                         System.out.println("This media is unplayable");
                     } else {
                         if (item instanceof DigitalVideoDisc dvd) {
-                            try {
-                                dvd.play();
-                            } catch (PlayerException e) {
-                                System.out.println("Error: " + e.getMessage());
-                            }
+                                try {
+                                    dvd.play();
+                                } catch (PlayerException e) {
+                                    System.out.println("Error: " + e.getMessage());
+                                }
                         }
                         if (item instanceof CompactDisc cd) {
                             if (((CompactDisc) item).getTracks().isEmpty()) {

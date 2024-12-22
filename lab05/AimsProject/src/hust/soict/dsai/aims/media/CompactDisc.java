@@ -40,7 +40,8 @@ public class CompactDisc extends Disc implements Playable {
         this.artist = artist;
         this.tracks = tracks;
     }
-    public CompactDisc(int id, String title, String category, float cost,String artist, ArrayList<Track> tracks) {
+    
+    public CompactDisc(int id, String title, String category, float cost, String artist, ArrayList<Track> tracks) {
         super(id, title, category, cost);
         this.tracks = tracks;
         this.artist = artist;

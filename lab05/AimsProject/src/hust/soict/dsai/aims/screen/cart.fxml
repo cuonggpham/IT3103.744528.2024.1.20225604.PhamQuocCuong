@@ -16,37 +16,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" 
-xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
     <top>
         <VBox prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <MenuBar>
-                    <menus>
-                        <Menu mnemonicParsing="false" text="Options">
-                            <items>
-                                <Menu mnemonicParsing="false" text="Update store">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Add book" />
-                                        <MenuItem mnemonicParsing="false" text="Add DVD" />
-                                        <MenuItem mnemonicParsing="false" text="Add CD" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="View store">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    </items>
-                                </Menu>
-                                <Menu mnemonicParsing="false" text="View cart">
-                                    <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                    </items>
-                                </Menu>
-                            </items>
-                        </Menu>
-                    </menus>
-                </MenuBar>
-                <Label text="CART" textFill="#000fff">
+                <Label text="Cuong PQ - CART" textFill="#ff5733">
                     <font>
                         <Font size="50.0" />
                     </font>
@@ -65,7 +39,7 @@ xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
                         <Insets bottom="10.0" top="10.0" />
                     </padding>
                     <children>
-                        <Label text="Filter" />
+                        <Label text="Filter:" style="-fx-font-weight: bold;" />
                         <TextField fx:id="tfFilter" />
                         <RadioButton fx:id="radioBtnFilterId" mnemonicParsing="false" selected="true" text="By ID">
                             <toggleGroup>
@@ -73,6 +47,14 @@ xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
                             </toggleGroup>
                         </RadioButton>
                         <RadioButton fx:id="radioBtnFilterTitle" mnemonicParsing="false" text="By Title" toggleGroup="$filterCategory" />
+                        <Label text="      " />
+                        <Label text="Sort:" style="-fx-font-weight: bold;" />
+                        <RadioButton fx:id="radioBtnSortCost" mnemonicParsing="false" selected="true" text="By Cost">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="sortCategory" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioBtnSortTitle" mnemonicParsing="false" text="By Title" toggleGroup="$sortCategory" />
                     </children>
                 </HBox>
                 <TableView fx:id="tblMedia" prefHeight="200.0" prefWidth="200.0">
@@ -110,14 +92,14 @@ xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
                                 <Insets right="10.0" />
                             </padding>
                         </Label>
-                        <Label fx:id="totalPrice" text="0 $" textFill="#000fff">
+                        <Label fx:id="totalPrice" text="0 $" textFill="#ff5733">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
                     </children>
                 </HBox>
-                <Button fx:id="btnPlaceOrder" mnemonicParsing="false" style="-fx-background-color: blue;" text="Place Order" textFill="WHITE">
+                <Button fx:id="btnPlaceOrder" mnemonicParsing="false" style="-fx-background-color: #28a745;" text="Place Order" textFill="WHITE">
                     <font>
                         <Font size="24.0" />
                     </font>
